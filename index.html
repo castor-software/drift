@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Drift - Software evolution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <!-- ICONS -->
+    <link href="./css/all.css" rel="stylesheet">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,900;1,900&display=swap"
+        rel="stylesheet">
+    <!-- STYLES -->
+    <link href="./css/tailWindStyles.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/driftStyles.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- PREFETCH BACKUP IMAGES -->
+    <link rel=”prefetch” href="./img/backupCoverage.jpg">
+    <link rel=”prefetch” href="./img/backupGraph.jpg">
+    <link rel=”prefetch” href="./img/backupNetwork.jpg">
+    <link rel=”prefetch” href="./img/backupProfile.jpg">
+    <link rel=”prefetch” href="./img/backupScreenshot.jpg">
+    <link rel=”prefetch” href="./img/imgTest.png">
+
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body class="m-0 robotoFont background-black h-100">
+
+    <div id="app" class="h-100 ">
+        <div id="mainMenu"></div>
+        <div id="page-content" class="content h-100">
+        </div>
+        <div id="chatButton"></div>
+        <div id="chat"></div>
+        <div id="mainViz" class="fixed top-0 -z-10"></div>
+
+    </div>
+
+
+    <!-- SHADER AND VERTEX -->
+    <script type="x-shader/x-vertex" id="vertexshader">
+
+        uniform float time;
+        varying vec2 vUv;
+      
+        uniform vec2 pixels;
+        float PI=3.141592653589793238;
+        uniform float distanceFromCenter;
+        void main(){
+            vUv=(uv-vec2(.5))*(.8-.2*distanceFromCenter*(2.-distanceFromCenter))+vec2(.5);
+            vec3 pos=position;
+            pos.y+=sin(PI*uv.x)*.01;
+            pos.z+=sin(PI*uv.x)*.02;
+            
+            pos.y+=sin(time*.3)*.02;
+            vUv.y-=sin(time*.3)*.02;
+            gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);
+        }
+
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentshader">
+
+        uniform float time;
+        uniform float progress;
+        uniform float distanceFromCenter;
+        uniform sampler2D texture1;
+        uniform vec4 resolution;
+        varying vec2 vUv;
+       
+        float PI=3.141592653589793238;
+        void main(){
+            
+            vec4 t=texture2D(texture1,vUv);
+            // The 0.75 corresponds to a distanceFromCenter value of 3
+            vec2 centered_co = (vUv.xy * 2.0 - 1.0) * 0.75;
+            t *= 1.0 - pow(clamp(length(centered_co) - 0.5, 0.0, 1.0) * 2.0, 5.0);
+            gl_FragColor=t;
+        }
+
+    </script>
+
+    <!-- SHADER AND VERTEX -->
+    <script type="x-shader/x-vertex" id="CRTvertexshader">
+
+        uniform float time;
+        varying vec2 vUv;
+      
+        uniform vec2 pixels;
+        float PI=3.141592653589793238;
+        uniform float distanceFromCenter;
+        void main(){
+            vUv=(uv-vec2(.5))*(.8-.2*distanceFromCenter*(2.-distanceFromCenter))+vec2(.5);
+            vec3 pos=position;
+           
+            vUv.y-=sin(time*.3)*.02;
+            gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);
+        }
+
+    </script>
+
+    <script type="x-shader/x-fragment" id="CRTfragmentshader">
+
+        uniform sampler2D texture1;
+        uniform vec2 u_resolution;
+
+        void main () {
+            vec2 st = gl_FragCoord.xy/u_resolution.xy;
+            vec4 color = vec4(st.x,st.y,0.0,1.0);
+
+            color = texture2D(texture1,st);
+
+            gl_FragColor = color;
+        }
+
+    </script>
+
+    <!-- EXTERNAL LIBRARIES -->
+    <script src="./js/d3.min.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script src="https://cdn.socket.io/4.1.1/socket.io.min.js"
+        integrity="sha384-cdrFIqe3RasCMNE0jeFG9xJHog/tgOVC1E9Lzve8LQN1g5WUHo0Kvk1mawWjxX7a"
+        crossorigin="anonymous"></script>
+    <!-- The background music code -->
+    <script src="./js/Tone.js"></script>
+    <script src="./js/music.js"></script>
+    <!-- API -->
+    <script src="js/requestService.js"></script>
+    <script src="js/interaction.js"></script>
+    <script>window.interaction = new Interaction()</script>
+    <!-- The application JavaScript code -->
+    <script type="module" src="js/app.js"></script>
+
+
+</body>
+
+</html>
