@@ -42,11 +42,11 @@ export const legendTexts = {
         nerd: `This is a screenshot taken by the Drift bot after searching for 2021`
     },
     coverage: {
-        human: `An abstract visualization of all the lines of code, written by teams of developers. All of tgem are necessary to produce the search result web page.`,
+        human: `An abstract visualization of all the lines of code, written by teams of developers. All of them are necessary to produce the search result web page.`,
         nerd: `A visualization of the coverage of the javacript code that has been executed to render the search result page.`
     },
     graph: {
-        human: `The flow represents the complete sequence of operations that have been performed in order to deliver the result of the search on a web page, and to organize this content in a nice anc comprehensive manner.`,
+        human: `The flow represents the complete sequence of operations that have been performed in order to deliver the result of the search on a web page, and to organize this content in a nice and comprehensive manner.`,
         nerd: `This represents the complete execution trace of javascript functions was observed when rendering the search result page in the browser of the Drift bot`
     },
     network: {
