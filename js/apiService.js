@@ -3,40 +3,42 @@ const requestService = new RequestService();
 
 export default class ApiService {
 
+    //return an array with all the available sites
     getSites() {
         const url = `${BASE_URL}/api/websites`;
-        return requestService.getRequest(url);
-      }
-    
-      getTimes() {
-        const url = `/assets/data/times.json`;
-        return requestService.getRequest(url);
-      }
-    
-      getMenu(type) {
+        return requestService.getRequest(url)
+    }
+
+    getTimes() {
+        const url = `${BASE_URL}/api/times`;
+        return requestService.getRequest(url)
+
+    }
+
+    getMenu(type) {
         return type == "views" ? viewsMenu : sitesMenu;
-      }
-    
-      getData(type) {
-        const url = `/assets/data/sites.json`;
-        return requestService.getRequest(url);
-      }
-    
-      getSiteScreenshot(site, time, size) {
-        return `/assets/images/${size}/${site}/screenshots/${time}.jpg`;
-      }
-    
-      getSiteGraph(site, time, size) {
-        return `/assets/images/${size}/${site}/graph/${time}.jpg`;
-      }
-    
-      getSiteCoverage(site, time, size) {
-        return `/assets/images/${size}/${site}/coverage/${time}.jpg`;
-      }
-    
-      getSiteNetwork(site, time, size) {
-        return `/assets/images/${size}/${site}/network/${time}.jpg`;
-      }
+    }
+
+    getData(type) {
+        const url = `${BASE_URL}/api/sites`;
+        return requestService.getRequest(url)
+    }
+
+    getSiteScreenshot(site, time, size) {
+        return `${BASE_URL}/assets/images/${size}/${site}/screenshots/${time}.jpg`;
+    }
+
+    getSiteGraph(site, time, size) {
+        return `${BASE_URL}/assets/images/${size}/${site}/graph/${time}.jpg`;
+    }
+
+    getSiteCoverage(site, time, size) {
+        return `${BASE_URL}/assets/images/${size}/${site}/coverage/${time}.jpg`;
+    }
+
+    getSiteNetwork(site, time, size) {
+        return `${BASE_URL}/assets/images/${size}/${site}/network/${time}.jpg`;
+    }
 
     getMainMenu() {
         return mainMenu;
