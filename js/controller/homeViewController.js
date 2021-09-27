@@ -8,11 +8,11 @@ export default class HomeViewController {
     }
 
     addEventListener() {
-        this.view.meetRobot_btn.addEventListener("click", (e) => {
-            this.model.updateURL("/driftbot", "Meet the bot");
-            showView('driftbot');
-            e.preventDefault();
-        });
+        // this.view.meetRobot_btn.addEventListener("click", (e) => {
+        //     this.model.updateURL("/driftbot", "Meet the bot");
+        //     showView('driftbot');
+        //     e.preventDefault();
+        // });
         this.view.viewExhibition_btn.addEventListener("click", (e) => {
             this.model.updateURL("/exhibition", "Drift");
             showView('exhibition');
@@ -29,21 +29,21 @@ export default class HomeViewController {
             e.preventDefault();
         });
 
-        this.view.username_inp.addEventListener("change", () => {
-            this.model.interaction.changeUsername(this.view.username_inp.value);
-        });
+        // this.view.username_inp.addEventListener("change", () => {
+        //     this.model.interaction.changeUsername(this.view.username_inp.value);
+        // });
 
-        this.model.interaction.onWelcome((data) => {
-            this.view.updateUsername(this.model.interaction.username);
-        })
+        // this.model.interaction.onWelcome((data) => {
+        //     this.view.updateUsername(this.model.interaction.username);
+        // })
     }
 
     removeEventListener() {
 
 
-        this.view.meetRobot_btn.removeEventListener("click", () => {
-            showView('driftbot');
-        });
+        // this.view.meetRobot_btn.removeEventListener("click", () => {
+        //     showView('driftbot');
+        // });
         this.view.viewExhibition_btn.removeEventListener("click", () => {
             showView('exhibition');
         });

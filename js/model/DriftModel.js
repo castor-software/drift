@@ -290,7 +290,7 @@ export default class DriftModel {
                     name: site,
                     state: site == "qwant" ? 1 : 0,
                     value: 0,
-                    image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+                    image: `/assets/images/300/${site}/graph/1619197200000.jpg`,
                     logo: `logo.${site}.png`
                 }
             })

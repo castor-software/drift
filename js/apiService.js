@@ -5,12 +5,12 @@ export default class ApiService {
 
     //return an array with all the available sites
     getSites() {
-        const url = `${BASE_URL}/api/websites`;
+        const url = `/assets/data/sites.json`;
         return requestService.getRequest(url)
     }
 
     getTimes() {
-        const url = `${BASE_URL}/api/times`;
+        const url = `/assets/data/times.json`;
         return requestService.getRequest(url)
 
     }
@@ -20,24 +20,24 @@ export default class ApiService {
     }
 
     getData(type) {
-        const url = `${BASE_URL}/api/sites`;
+        const url = `/assets/data/sites.json`;
         return requestService.getRequest(url)
     }
 
     getSiteScreenshot(site, time, size) {
-        return `${BASE_URL}/assets/images/${size}/${site}/screenshots/${time}.jpg`;
+        return `/assets/images/${size}/${site}/screenshots/${time}.jpg`;
     }
 
     getSiteGraph(site, time, size) {
-        return `${BASE_URL}/assets/images/${size}/${site}/graph/${time}.jpg`;
+        return `/assets/images/${size}/${site}/graph/${time}.jpg`;
     }
 
     getSiteCoverage(site, time, size) {
-        return `${BASE_URL}/assets/images/${size}/${site}/coverage/${time}.jpg`;
+        return `/assets/images/${size}/${site}/coverage/${time}.jpg`;
     }
 
     getSiteNetwork(site, time, size) {
-        return `${BASE_URL}/assets/images/${size}/${site}/network/${time}.jpg`;
+        return `/assets/images/${size}/${site}/network/${time}.jpg`;
     }
 
     getMainMenu() {
@@ -65,7 +65,7 @@ export const dataTest = {
             name: "bing",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/bing/graph/1619197200000.jpg",
             logo: "logo.bing.png",
 
         },
@@ -73,7 +73,7 @@ export const dataTest = {
             name: "duckduckgo",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/duckduckgo/graph/1619197200000.jpg",
             logo: "logo.duckduckgo.png",
 
         },
@@ -81,7 +81,7 @@ export const dataTest = {
             name: "google",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/google/graph/1619197200000.jpg",
             logo: "logo.google.png",
 
         },
@@ -89,7 +89,7 @@ export const dataTest = {
             name: "kiddle",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/kiddle/graph/1619197200000.jpg",
             logo: "logo.kiddle.png",
 
         },
@@ -97,15 +97,15 @@ export const dataTest = {
             name: "qwant",
             state: 1,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/qwant/graph/1619197200000.jpg",
             logo: "logo.qwant.png",
 
         },
         {
             name: "spotify",
             state: 0,
-            value: 90,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            value: 1.25,
+            image: "/assets/images/300/spotify/graph/1619197200000.jpg",
             logo: "logo.spotify.png",
 
         },
@@ -113,7 +113,7 @@ export const dataTest = {
             name: "wikipedia",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/wikipedia/graph/1619197200000.jpg",
             logo: "logo.wikipedia.png",
 
         },
@@ -121,7 +121,7 @@ export const dataTest = {
             name: "yahoo",
             state: 0,
             value: 1.25,
-            image: "https://drift.durieux.me/api/time/1619197200000/google/graph.png?width=300",
+            image: "/assets/images/300/yahoo/graph/1619197200000.jpg",
             logo: "logo.yahoo.png",
 
         },
@@ -130,11 +130,11 @@ export const dataTest = {
 }
 
 export const mainMenu = [
-    {
-        human: "Meet the bot",
-        nerd: "Meet Motoo",
-        value: "driftbot"
-    },
+    // {
+    //     human: "Meet the bot",
+    //     nerd: "Meet Motoo",
+    //     value: "driftbot"
+    // },
     {
         human: "View exhibition",
         nerd: "View Evolution",

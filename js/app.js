@@ -1,32 +1,32 @@
 import MainVizTDModel from './model/mainVizTDModel.js';
 import DriftModel from './model/DriftModel.js';
-import ChatView from './view/miniChatView.js';
-import MiniChatController from './controller/miniChatController.js';
 import HomeView from './view/HomeView.js';
 import HomeViewController from './controller/homeViewController.js';
 import AboutView from './view/aboutView.js';
 import AboutViewController from './controller/aboutViewController.js'
 import MainMenuView from './view/mainMenuView.js';
 import MainMenuViewController from './controller/mainMenuViewController.js';
-import RobotView from './view/robotView.js';
-import RobotViewController from './controller/robotViewController.js';
+// import RobotView from './view/robotView.js';
+// import RobotViewController from './controller/robotViewController.js';
 import TourView from './view/tourView.js';
 import TourViewController from './controller/tourViewController.js';
 import ApiService from './apiService.js';
 import ExhibitionView from './view/ExhibitionView.js';
 import ExhibitionViewController from './controller/exhibitionViewController.js';
-import ChatButtonView from './view/chatButtonView.js';
-import ChatBtnViewController from './controller/chatButtonViewController.js';
 import MainVizTDView from './view/MainVizTDView.js';
 import MainVizTDViewController from './controller/mainVizTDViewController.js';
-import EmojiView from './view/emojiView.js';
-import EmojiController from './controller/emojiController.js';
+// import ChatView from './view/miniChatView.js';
+// import MiniChatController from './controller/miniChatController.js';
+// import ChatButtonView from './view/chatButtonView.js';
+// import ChatBtnViewController from './controller/chatButtonViewController.js';
+// import EmojiView from './view/emojiView.js';
+// import EmojiController from './controller/emojiController.js';
 import { legendTexts } from './staticData.js'
 import Legend from './model/legendModel.js'
 import LoadingView from './view/loadingView.js';
 import LoadingController from './controller/loadingController.js';
 
-export let mainVizTD, robotView, miniChatController, homeViewController, exhibitionViewController, robotViewController, tourViewController, aboutViewController, mainMenuViewController, emojiController, chatBtnController, mainVizController;
+export let mainVizTD, miniChatController, homeViewController, exhibitionViewController, tourViewController, aboutViewController, mainMenuViewController, emojiController, chatBtnController, mainVizController;
 // let mainVizTD
 export let currentView, model, legendModel;
 
@@ -67,8 +67,8 @@ window.onload = function () {
 function initViewsAndControllers() {
     legendModel = new Legend(legendTexts);
 
-    let chatView = new ChatView('chat', model);
-    miniChatController = new MiniChatController(chatView, model);
+    // let chatView = new ChatView('chat', model);
+    // miniChatController = new MiniChatController(chatView, model);
 
     //Initialize VIEWS and controllers
     let homeView = new HomeView('page-content', model);
@@ -77,8 +77,8 @@ function initViewsAndControllers() {
     let exhibitionView = new ExhibitionView('page-content', model, mainVizTD, legendModel);
     exhibitionViewController = new ExhibitionViewController(exhibitionView, mainVizTD, model);
 
-    let robotView = new RobotView('page-content', model);
-    robotViewController = new RobotViewController(robotView, chatView, model);
+    // let robotView = new RobotView('page-content', model);
+    // robotViewController = new RobotViewController(robotView, chatView, model);
 
     let tourView = new TourView('page-content', model);
     tourViewController = new TourViewController(tourView);
@@ -89,11 +89,11 @@ function initViewsAndControllers() {
     let mainMenuView = new MainMenuView('mainMenu', model);
     mainMenuViewController = new MainMenuViewController(mainMenuView, model);
 
-    let emojiView = new EmojiView('emojiParty');
-    emojiController = new EmojiController(emojiView, model);
+    // let emojiView = new EmojiView('emojiParty');
+    // emojiController = new EmojiController(emojiView, model);
 
-    let chatBtnView = new ChatButtonView('chatButton', model);
-    chatBtnController = new ChatBtnViewController(chatBtnView, model);
+    // let chatBtnView = new ChatButtonView('chatButton', model);
+    // chatBtnController = new ChatBtnViewController(chatBtnView, model);
 
     let mainViztDView = new MainVizTDView('mainViz', mainVizTD);
     mainVizController = new MainVizTDViewController(mainViztDView, mainVizTD);
@@ -121,7 +121,7 @@ window.onpopstate = function () {
 export default function showView(view) {
 
     start_sound_effect(); // Play a sound effect
-    model.interaction.page(view);
+    // model.interaction.page(view);
     if (currentView == exhibitionViewController) {
         // mainVizTD.removeImages();
         model.toggleNoNotification(true);
@@ -144,13 +144,13 @@ export default function showView(view) {
             mainVizTD.toggleParticles(false);
             model.modifyTittle("Exhibition");
             break;
-        case 'driftbot':
-            currentView = robotViewController;
-            robotViewController.renderView();
-            mainMenuViewController.renderView();
-            mainVizTD.toggleParticles(false);
-            model.modifyTittle("Driftbot");
-            break;
+        // case 'driftbot':
+        //     currentView = robotViewController;
+        //     robotViewController.renderView();
+        //     mainMenuViewController.renderView();
+        //     mainVizTD.toggleParticles(false);
+        //     model.modifyTittle("Driftbot");
+        //     break;
         case 'tour':
             currentView = tourViewController;
             tourViewController.renderView();

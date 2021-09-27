@@ -234,18 +234,18 @@ function start_sound_effect() {
 function update_visitors_connected() {
     if (all_music_loaded && music_is_playing) {
         let new_level = 0;
-        if (interaction.users) {
-            if (interaction.users.length > 1) {
-                // Someone more than the current user
-                new_level = 1;
-            }
-            if (interaction.users.length > 3) {
-                new_level = 2;
-            }
-            if (interaction.users.length > 7) {
-                new_level = 3;
-            }
-        }
+        // if (interaction.users) {
+        //     if (interaction.users.length > 1) {
+        //         // Someone more than the current user
+        //         new_level = 1;
+        //     }
+        //     if (interaction.users.length > 3) {
+        //         new_level = 2;
+        //     }
+        //     if (interaction.users.length > 7) {
+        //         new_level = 3;
+        //     }
+        // }
         // console.log("visitors connected, new_level: " + new_level + "\ninteraction.users: " + JSON.stringify(interaction.users));
         if (new_level != visitors_connected_level) {
             if (new_level > visitors_connected_level) {
